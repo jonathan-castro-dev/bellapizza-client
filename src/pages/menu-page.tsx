@@ -7,6 +7,12 @@ import type { CategoryId } from '../data/menu'
 
 export function MenuPage() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<CategoryId>('pizzas')
+  const [showAllProducts, setShowAllProducts] = useState(false)
+
+  function handleSelectCategory(categoryId: CategoryId) {
+    setSelectedCategoryId(categoryId)
+    setShowAllProducts(false)
+  }
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-gray-50 pb-34">
@@ -14,9 +20,14 @@ export function MenuPage() {
       <main className="flex flex-col gap-6 pt-4">
         <CategorySection
           selectedCategoryId={selectedCategoryId}
-          onSelectCategory={setSelectedCategoryId}
+          showAllProducts={showAllProducts}
+          onSelectCategory={handleSelectCategory}
         />
-        <ProductSection selectedCategoryId={selectedCategoryId} />
+        <ProductSection
+          selectedCategoryId={selectedCategoryId}
+          showAllProducts={showAllProducts}
+          onShowAllProducts={() => setShowAllProducts(true)}
+        />
       </main>
       <BottomBar />
     </div>

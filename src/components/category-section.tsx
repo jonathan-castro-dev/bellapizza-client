@@ -3,11 +3,13 @@ import { categories } from '../data/menu'
 
 type CategorySectionProps = {
   selectedCategoryId: CategoryId
+  showAllProducts: boolean
   onSelectCategory: (categoryId: CategoryId) => void
 }
 
 export function CategorySection({
   selectedCategoryId,
+  showAllProducts,
   onSelectCategory,
 }: CategorySectionProps) {
   return (
@@ -18,14 +20,14 @@ export function CategorySection({
       <div className="flex gap-2 overflow-x-auto px-4 pb-1">
         {categories.map((category) => {
           const Icon = category.icon
-          const isActive = category.id === selectedCategoryId
+          const isActive = !showAllProducts && category.id === selectedCategoryId
 
           return (
             <button
               key={category.id}
               type="button"
               onClick={() => onSelectCategory(category.id)}
-              className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
+              className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
                 isActive
                   ? 'bg-red-700 text-white'
                   : 'bg-gray-200 text-stone-600 hover:bg-gray-300'
