@@ -1,5 +1,5 @@
-import { MenuPage } from './pages/menu-page'
+import { CartPage } from './pages/cart-page'
 
 export function App() {
-  return <MenuPage />
+  return <CartPage />
 }
