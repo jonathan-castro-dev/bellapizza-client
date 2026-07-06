@@ -1,5 +1,10 @@
-import { CartPage } from './pages/cart-page'
+import { CartProvider } from './context/cart-context'
+import { MenuPage } from './pages/menu-page'
 
 export function App() {
-  return <CartPage />
+  return (
+    <CartProvider>
+      <MenuPage />
+    </CartProvider>
+  )
 }

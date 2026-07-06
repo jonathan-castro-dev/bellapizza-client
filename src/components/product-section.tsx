@@ -1,4 +1,4 @@
-import type { CategoryId } from '../data/menu'
+import type { CategoryId, Product } from '../data/menu'
 import { getCategoryById, getProductsByCategory, products } from '../data/menu'
 import { ProductCard } from './product-card'
 
@@ -6,12 +6,14 @@ type ProductSectionProps = {
   selectedCategoryId: CategoryId
   showAllProducts: boolean
   onShowAllProducts: () => void
+  onAddToCart: (product: Product) => void
 }
 
 export function ProductSection({
   selectedCategoryId,
   showAllProducts,
   onShowAllProducts,
+  onAddToCart,
 }: ProductSectionProps) {
   const category = getCategoryById(selectedCategoryId)
   const displayedProducts = showAllProducts
@@ -34,7 +36,7 @@ export function ProductSection({
       </div>
       <div className="flex flex-col gap-4">
         {displayedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
         ))}
       </div>
     </section>

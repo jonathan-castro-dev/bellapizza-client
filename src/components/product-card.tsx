@@ -3,9 +3,10 @@ import type { Product } from '../data/menu'
 
 type ProductCardProps = {
   product: Product
+  onAddToCart: (product: Product) => void
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <article className="flex overflow-hidden rounded-xl border border-rose-200/30 bg-white shadow-md">
       <img
@@ -22,12 +23,14 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="flex items-center justify-between pt-3">
           <span className="text-lg font-bold text-red-700">{product.price}</span>
-          <div
-            className="flex size-10 items-center justify-center rounded-full bg-red-700 shadow-md"
-            aria-hidden="true"
+          <button
+            type="button"
+            onClick={() => onAddToCart(product)}
+            className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-red-700 shadow-md"
+            aria-label={`Adicionar ${product.name} ao carrinho`}
           >
             <Plus className="size-4 text-white" />
-          </div>
+          </button>
         </div>
       </div>
     </article>
