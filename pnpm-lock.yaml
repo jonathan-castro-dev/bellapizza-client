@@ -14,6 +14,9 @@ dependencies:
   react-dom:
     specifier: ^19.2.7
     version: 19.2.7(react@19.2.7)
+  react-router:
+    specifier: ^8.1.0
+    version: 8.1.0(react-dom@19.2.7)(react@19.2.7)
 
 devDependencies:
   '@eslint/js':
@@ -935,6 +938,10 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
+  /cookie-es@3.1.1:
+    resolution: {integrity: sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==}
+    dev: false
+
   /cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -1522,6 +1529,21 @@ packages:
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
+    dev: false
+
+  /react-router@8.1.0(react-dom@19.2.7)(react@19.2.7):
+    resolution: {integrity: sha512-Mdfi61uObuvWNN9OhChOC0HV6YWOIfKRzEWOvCHRSuQg8IM+Nv10edaM/2HE8ZixBpUTdQbruyWqC3sDkkh9vw==}
+    engines: {node: '>=22.22.0'}
+    peerDependencies:
+      react: '>=19.2.7'
+      react-dom: '>=19.2.7'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+    dependencies:
+      cookie-es: 3.1.1
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
     dev: false
 
   /react@19.2.7:

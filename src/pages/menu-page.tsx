@@ -32,7 +32,7 @@ export function MenuPage() {
           onAddToCart={addToCart}
         />
       </main>
-      <BottomBar />
+      <BottomBar hasItems={itemCount > 0} />
     </div>
   )
 }
