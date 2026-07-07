@@ -45,7 +45,7 @@ export type Product = {
   categoryId: CategoryId
   name: string
   description: string
-  price: string
+  price: number
   image: string
 }
 
@@ -62,7 +62,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Margherita Premium',
     description: 'Molho artesanal, mozzarella de búfala, manjericão fresco e azeite…',
-    price: 'R$ 54,90',
+    price: 54.9,
     image: margheritaImage,
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Calabresa Especial',
     description: 'Calabresa fatiada, cebola roxa, azeitonas pretas e orégano…',
-    price: 'R$ 49,90',
+    price: 49.9,
     image: calabresaImage,
   },
   {
@@ -78,7 +78,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Pepperoni Feast',
     description: 'Dobro de pepperoni crocante sobre generosa camada de queijo…',
-    price: 'R$ 59,90',
+    price: 59.9,
     image: pepperoniImage,
   },
   {
@@ -86,7 +86,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Quatro Queijos',
     description: 'Combinação perfeita de mozzarella, provolone, parmesão e gorgonzola.',
-    price: 'R$ 58,90',
+    price: 58.9,
     image: quatroQueijosImage,
   },
   {
@@ -94,7 +94,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Portuguesa',
     description: 'Presunto, ovos, cebola, ervilha, azeitonas e muita mozzarella.',
-    price: 'R$ 52,90',
+    price: 52.9,
     image: portuguesaImage,
   },
   {
@@ -102,7 +102,7 @@ export const products: Product[] = [
     categoryId: 'pizzas',
     name: 'Frango com Catupiry',
     description: 'Frango desfiado temperado com o legítimo requeijão Catupiry.',
-    price: 'R$ 56,90',
+    price: 56.9,
     image: frangoCatupiryImage,
   },
   {
@@ -110,7 +110,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Coca-Cola Lata',
     description: 'Refrigerante gelado, sabor clássico e refrescante em lata 350ml…',
-    price: 'R$ 6,90',
+    price: 6.9,
     image: cocaColaLataImage,
   },
   {
@@ -118,7 +118,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Coca-Cola 1 Litro',
     description: 'Garrafa PET de 1 litro, ideal para compartilhar na mesa…',
-    price: 'R$ 9,90',
+    price: 9.9,
     image: cocaCola1LitroImage,
   },
   {
@@ -126,7 +126,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Coca-Cola 2 Litros',
     description: 'Garrafa PET de 2 litros, perfeita para reunir a família toda…',
-    price: 'R$ 14,90',
+    price: 14.9,
     image: cocaCola2LitroImage,
   },
   {
@@ -134,7 +134,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Fanta Laranja Lata',
     description: 'Sabor cítrico intenso de laranja, bem gelada em lata 350ml…',
-    price: 'R$ 6,50',
+    price: 6.5,
     image: fantaLataImage,
   },
   {
@@ -142,7 +142,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Fanta Laranja 1 Litro',
     description: 'Refrescante sabor laranja em garrafa PET de 1 litro…',
-    price: 'R$ 8,90',
+    price: 8.9,
     image: fanta1LitroImage,
   },
   {
@@ -150,7 +150,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Fanta Laranja 2 Litros',
     description: 'Garrafa PET de 2 litros com o clássico sabor laranja da Fanta…',
-    price: 'R$ 13,50',
+    price: 13.5,
     image: fanta2LitroImage,
   },
   {
@@ -158,7 +158,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Kuat Lata',
     description: 'Guaraná brasileiro, sabor marcante e super refrescante em lata…',
-    price: 'R$ 5,90',
+    price: 5.9,
     image: kuatLataImage,
   },
   {
@@ -166,7 +166,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Kuat 1 Litro',
     description: 'Guaraná tradicional em garrafa PET de 1 litro, bem gelado…',
-    price: 'R$ 7,90',
+    price: 7.9,
     image: kuat1LitroImage,
   },
   {
@@ -174,7 +174,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Kuat 2 Litros',
     description: 'Garrafa PET de 2 litros com o autêntico sabor guaraná Kuat…',
-    price: 'R$ 12,90',
+    price: 12.9,
     image: kuat2LitroImage,
   },
   {
@@ -182,7 +182,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Pepsi Lata',
     description: 'Cola suave e equilibrada, servida gelada em lata 350ml…',
-    price: 'R$ 6,90',
+    price: 6.9,
     image: pepsiLataImage,
   },
   {
@@ -190,7 +190,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Pepsi 1 Litro',
     description: 'Garrafa PET de 1 litro com o sabor clássico da Pepsi…',
-    price: 'R$ 9,50',
+    price: 9.5,
     image: pepsi1LitroImage,
   },
   {
@@ -198,7 +198,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Pepsi 2 Litros',
     description: 'Garrafa PET de 2 litros, ideal para acompanhar a refeição…',
-    price: 'R$ 14,50',
+    price: 14.5,
     image: pepsi2LitroImage,
   },
   {
@@ -206,7 +206,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Sprite Lata',
     description: 'Limão e lima cítricos, leve e refrescante em lata 350ml…',
-    price: 'R$ 6,50',
+    price: 6.5,
     image: spriteLataImage,
   },
   {
@@ -214,7 +214,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Sprite 1 Litro',
     description: 'Sabor limão-lima intenso em garrafa PET de 1 litro…',
-    price: 'R$ 8,90',
+    price: 8.9,
     image: sprite1LitroImage,
   },
   {
@@ -222,7 +222,7 @@ export const products: Product[] = [
     categoryId: 'refrigerantes',
     name: 'Sprite 2 Litros',
     description: 'Garrafa PET de 2 litros com o refresco cítrico da Sprite…',
-    price: 'R$ 13,90',
+    price: 13.9,
     image: sprite2LitroImage,
   },
   {
@@ -230,7 +230,7 @@ export const products: Product[] = [
     categoryId: 'sobremesas',
     name: 'Bolo de Limão',
     description: 'Massa fofa com calda cítrica de limão e cobertura aveludada…',
-    price: 'R$ 22,90',
+    price: 22.9,
     image: boloDeLimaoImage,
   },
   {
@@ -238,7 +238,7 @@ export const products: Product[] = [
     categoryId: 'sobremesas',
     name: 'Bolo de Morango',
     description: 'Camadas de pão de ló, chantilly e morangos frescos selecionados…',
-    price: 'R$ 24,90',
+    price: 24.9,
     image: boloDeMorangoImage,
   },
   {
@@ -246,7 +246,7 @@ export const products: Product[] = [
     categoryId: 'sobremesas',
     name: 'Bolo Red Velvet',
     description: 'Massa aveludada vermelha com cream cheese e toque de cacau…',
-    price: 'R$ 26,90',
+    price: 26.9,
     image: boloRedVelvetImage,
   },
   {
@@ -254,7 +254,7 @@ export const products: Product[] = [
     categoryId: 'sobremesas',
     name: 'Brownie com Sorvete',
     description: 'Brownie quente de chocolate meio amargo com bola de sorvete…',
-    price: 'R$ 19,90',
+    price: 19.9,
     image: brownieImage,
   },
   {
@@ -262,7 +262,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Coxinha de Frango',
     description: 'Massa crocante recheada com frango desfiado bem temperado…',
-    price: 'R$ 8,90',
+    price: 8.9,
     image: coxinhaFrangoImage,
   },
   {
@@ -270,7 +270,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Coxinha com Catupiry',
     description: 'Frango desfiado com requeijão Catupiry cremoso por dentro…',
-    price: 'R$ 10,90',
+    price: 10.9,
     image: coxinhaCatupiryImage,
   },
   {
@@ -278,7 +278,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Empadão de Frango',
     description: 'Massa amanteigada, recheio cremoso de frango com milho e ervas…',
-    price: 'R$ 12,90',
+    price: 12.9,
     image: empadãoFrangoImage,
   },
   {
@@ -286,7 +286,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Enroladinho de Salsicha',
     description: 'Massa folhada dourada envolvendo salsicha suculenta e quente…',
-    price: 'R$ 7,90',
+    price: 7.9,
     image: enroladinhoImage,
   },
   {
@@ -294,7 +294,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Pão de Pizza',
     description: 'Pão macio com queijo derretido, orégano e molho de tomate…',
-    price: 'R$ 9,90',
+    price: 9.9,
     image: paoPizzaImage,
   },
   {
@@ -302,7 +302,7 @@ export const products: Product[] = [
     categoryId: 'entradas',
     name: 'Pastel de Frango',
     description: 'Massa fina e crocante com recheio cremoso de frango temperado…',
-    price: 'R$ 11,90',
+    price: 11.9,
     image: pastelFrangoImage,
   },
 ]

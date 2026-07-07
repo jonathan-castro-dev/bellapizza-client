@@ -1,12 +1,22 @@
 import { Minus, Plus } from 'lucide-react'
 import type { Product } from '../data/menu'
+import { formatCurrency } from '../utils/format-currency'
 
 type CartItemProps = {
   product: Product
   quantity: number
+  onIncrement: () => void
+  onDecrement: () => void
 }
 
-export function CartItem({ product, quantity }: CartItemProps) {
+export function CartItem({
+  product,
+  quantity,
+  onIncrement,
+  onDecrement,
+}: CartItemProps) {
+  const lineTotal = product.price * quantity
+
   return (
     <article className="flex gap-4 rounded-xl border border-rose-200/30 bg-white p-4 shadow-sm">
       <img
@@ -22,18 +32,27 @@ export function CartItem({ product, quantity }: CartItemProps) {
           </p>
         </div>
         <div className="flex items-center justify-between pt-2">
-          <span className="text-base font-bold text-red-700">{product.price}</span>
-          <div
-            className="flex items-center gap-3 rounded-full bg-gray-200 px-2 py-1"
-            aria-hidden="true"
-          >
-            <div className="flex size-6 items-center justify-center">
+          <span className="text-base font-bold text-red-700">
+            {formatCurrency(lineTotal)}
+          </span>
+          <div className="flex items-center gap-3 rounded-full bg-gray-200 px-2 py-1">
+            <button
+              type="button"
+              onClick={onDecrement}
+              className="flex size-6 cursor-pointer items-center justify-center"
+              aria-label={`Diminuir quantidade de ${product.name}`}
+            >
               <Minus className="size-3 text-red-700" strokeWidth={3} />
-            </div>
+            </button>
             <span className="text-base text-gray-900">{quantity}</span>
-            <div className="flex size-6 items-center justify-center">
+            <button
+              type="button"
+              onClick={onIncrement}
+              className="flex size-6 cursor-pointer items-center justify-center"
+              aria-label={`Aumentar quantidade de ${product.name}`}
+            >
               <Plus className="size-3 text-red-700" strokeWidth={3} />
-            </div>
+            </button>
           </div>
         </div>
       </div>

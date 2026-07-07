@@ -1,4 +1,5 @@
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
+import { Link } from 'react-router'
 
 type CartHeaderProps = {
   itemCount: number
@@ -8,7 +9,9 @@ export function CartHeader({ itemCount }: CartHeaderProps) {
   return (
     <header className="flex h-14 shrink-0 items-center justify-between bg-gray-50 px-4 drop-shadow-sm">
       <div className="flex items-center gap-3">
-        <ChevronLeft className="size-4 text-red-700" aria-hidden="true" />
+        <Link to="/">
+          <ChevronLeft className="size-4 text-red-700" aria-hidden="true" />
+        </Link>
         <h1 className="text-2xl font-extrabold text-red-700">Meu Carrinho</h1>
       </div>
       <div className="relative">

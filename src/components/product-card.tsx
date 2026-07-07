@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 import type { Product } from '../data/menu'
+import { formatCurrency } from '../utils/format-currency'
 
 type ProductCardProps = {
   product: Product
@@ -22,7 +23,9 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           </p>
         </div>
         <div className="flex items-center justify-between pt-3">
-          <span className="text-lg font-bold text-red-700">{product.price}</span>
+          <span className="text-lg font-bold text-red-700">
+            {formatCurrency(product.price)}
+          </span>
           <button
             type="button"
             onClick={() => onAddToCart(product)}
