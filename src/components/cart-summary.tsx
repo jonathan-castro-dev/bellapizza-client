@@ -1,5 +1,6 @@
 import { ShoppingCart } from 'lucide-react'
 import { formatCurrency } from '../utils/format-currency'
+import { Link } from 'react-router'
 
 type CartSummaryProps = {
   subtotal: number
@@ -27,13 +28,13 @@ export function CartSummary({ subtotal, total }: CartSummaryProps) {
             {formatCurrency(total)}
           </span>
         </div>
-        <button
-          type="button"
+        <Link
+          to="/checkout"
           className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-red-700 text-lg font-bold text-white shadow-md"
         >
           Finalizar Pedido
           <ShoppingCart className="size-5" aria-hidden="true" />
-        </button>
+        </Link>
       </div>
     </footer>
   )

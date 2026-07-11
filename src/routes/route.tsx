@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import { CartPage } from '../pages/cart-page'
+import { CheckoutPage } from '../pages/checkout-page'
 import { MenuPage } from '../pages/menu-page'
 
 export const router = createBrowserRouter([
@@ -13,6 +14,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '/checkout',
-    element: undefined,
+    element: <CheckoutPage />,
   },
 ])
