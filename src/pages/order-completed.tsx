@@ -1,5 +1,6 @@
 import { Clock } from 'lucide-react'
 import confirmIcon from '../assets/icons/confirm.png'
+import { Link } from 'react-router'
 
 export function OrderCompletedPage() {
   return (
@@ -40,12 +41,12 @@ export function OrderCompletedPage() {
           <span className="text-2xl font-bold text-[#191c1d]">30-45 min</span>
         </div>
 
-        <button
-          type="button"
+        <Link
+          to="/"
           className="flex h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-[#e31837] py-4 text-lg font-bold text-[#fffaf9] shadow-[0px_10px_15px_-3px_rgba(227,24,55,0.2),0px_4px_6px_-4px_rgba(227,24,55,0.2)]"
         >
           Fazer novo pedido
-        </button>
+        </Link>
       </main>
     </div>
   )

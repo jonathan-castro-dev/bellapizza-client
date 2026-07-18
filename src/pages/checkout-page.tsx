@@ -1,5 +1,6 @@
 import { Check, MapPin, User } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { submitOrder } from '../api/submit-order'
 import type { OrderType, PaymentMethod } from '../api/submit-order'
 import { CheckoutSummary } from '../components/checkout-summary'
@@ -10,7 +11,8 @@ import { CheckoutHeader } from '../components/checkout-header'
 import { useCart } from '../context/cart-context'
 
 export function CheckoutPage() {
-  const { cartItems, itemCount, subtotal, total } = useCart()
+  const navigate = useNavigate()
+  const { cartItems, itemCount, subtotal, total, clearCart } = useCart()
 
   const [fullName, setFullName] = useState('')
   const [orderType, setOrderType] = useState<OrderType>('delivery')
@@ -37,10 +39,21 @@ export function CheckoutPage() {
     return true
   }, [fullName, orderType, zipCode, street, number, complement])
 
+  function resetForm() {
+    setFullName('')
+    setOrderType('delivery')
+    setZipCode('')
+    setStreet('')
+    setNumber('')
+    setComplement('')
+    setPaymentMethod('credit_card')
+  }
+
   function handleConfirmOrder() {
     if (!isFormValid) {
       return
     }
+
     submitOrder({
       identification: { fullName },
       orderType,
@@ -50,6 +63,10 @@ export function CheckoutPage() {
       subtotal,
       total,
     })
+
+    resetForm()
+    clearCart()
+    navigate('/order-completed')
   }
 
   return (
