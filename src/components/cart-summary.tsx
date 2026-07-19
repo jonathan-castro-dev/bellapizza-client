@@ -1,5 +1,6 @@
+import { useCart } from '../context/cart-context'
 import { formatCurrency } from '../utils/format-currency'
-import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
 
 type CartSummaryProps = {
   subtotal: number
@@ -7,6 +8,8 @@ type CartSummaryProps = {
 }
 
 export function CartSummary({ subtotal, total }: CartSummaryProps) {
+  const { cartItems } = useCart()
+  const navigate = useNavigate()
   return (
     <footer className="fixed inset-x-0 bottom-0 border-t border-rose-200/30 bg-gray-50 shadow-lg">
       <div className="mx-auto flex w-full max-w-md flex-col gap-3 p-4">
@@ -27,12 +30,14 @@ export function CartSummary({ subtotal, total }: CartSummaryProps) {
             {formatCurrency(total)}
           </span>
         </div>
-        <Link
-          to="/checkout"
-          className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-red-700 text-lg font-bold text-white shadow-md"
+        <button
+          type="button"
+          onClick={() => navigate('/checkout')}
+          disabled={cartItems.length === 0}
+          className="flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-700 text-lg font-bold text-white shadow-md disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Finalizar Pedido
-        </Link>
+          Finalizar pedido
+        </button>
       </div>
     </footer>
   )
