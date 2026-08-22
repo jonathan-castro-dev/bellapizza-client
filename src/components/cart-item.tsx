@@ -1,6 +1,7 @@
 import { Minus, Plus } from 'lucide-react'
-import type { Product } from '../data/menu'
-import { formatCurrency } from '../utils/format-currency'
+import type { Product } from '@/api/get-products'
+import { formatCurrency } from '@/utils/format-currency'
+import { ProductImage } from './product-image'
 
 type CartItemProps = {
   product: Product
@@ -19,9 +20,8 @@ export function CartItem({
 
   return (
     <article className="flex gap-4 rounded-xl border border-rose-200/30 bg-white p-4 shadow-sm">
-      <img
-        src={product.image}
-        alt={product.name}
+      <ProductImage
+        product={product}
         className="size-24 shrink-0 rounded-lg object-cover"
       />
       <div className="flex min-w-0 flex-1 flex-col justify-between">

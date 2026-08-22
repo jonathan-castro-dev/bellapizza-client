@@ -1,15 +1,18 @@
-import type { CategoryId } from '../data/menu'
-import { categories } from '../data/menu'
+import type { Category } from '@/data/categories'
 
 type CategorySectionProps = {
-  selectedCategoryId: CategoryId
+  categories: Category[]
+  selectedCategoryId: string | null
   showAllProducts: boolean
-  onSelectCategory: (categoryId: CategoryId) => void
+  isLoading: boolean
+  onSelectCategory: (categoryId: string) => void
 }
 
 export function CategorySection({
+  categories,
   selectedCategoryId,
   showAllProducts,
+  isLoading,
   onSelectCategory,
 }: CategorySectionProps) {
   return (
@@ -18,29 +21,36 @@ export function CategorySection({
         CATEGORIAS
       </h2>
       <div className="flex gap-2 overflow-x-auto px-4 pb-1">
-        {categories.map((category) => {
-          const Icon = category.icon
-          const isActive = !showAllProducts && category.id === selectedCategoryId
-
-          return (
-            <button
-              key={category.id}
-              type="button"
-              onClick={() => onSelectCategory(category.id)}
-              className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
-                isActive
-                  ? 'bg-red-700 text-white'
-                  : 'bg-gray-200 text-stone-600 hover:bg-gray-300'
-              }`}
-            >
-              <Icon
-                className={`size-4 ${isActive ? 'text-white' : 'text-stone-600'}`}
-                aria-hidden="true"
+        {isLoading
+          ? Array.from({ length: 4 }, (_, index) => (
+              <div
+                key={index}
+                className="h-11 w-32 shrink-0 animate-pulse rounded-full bg-gray-200"
               />
-              <span>{category.name}</span>
-            </button>
-          )
-        })}
+            ))
+          : categories.map((category) => {
+              const Icon = category.icon
+              const isActive = !showAllProducts && category.id === selectedCategoryId
+
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => onSelectCategory(category.id)}
+                  className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
+                    isActive
+                      ? 'bg-red-700 text-white'
+                      : 'bg-gray-200 text-stone-600 hover:bg-gray-300'
+                  }`}
+                >
+                  <Icon
+                    className={`size-4 ${isActive ? 'text-white' : 'text-stone-600'}`}
+                    aria-hidden="true"
+                  />
+                  <span>{category.name}</span>
+                </button>
+              )
+            })}
       </div>
     </section>
   )

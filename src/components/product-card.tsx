@@ -1,6 +1,7 @@
 import { Plus } from 'lucide-react'
-import type { Product } from '../data/menu'
-import { formatCurrency } from '../utils/format-currency'
+import type { Product } from '@/api/get-products'
+import { formatCurrency } from '@/utils/format-currency'
+import { ProductImage } from './product-image'
 
 type ProductCardProps = {
   product: Product
@@ -10,9 +11,8 @@ type ProductCardProps = {
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
     <article className="flex overflow-hidden rounded-xl border border-rose-200/30 bg-white shadow-md">
-      <img
-        src={product.image}
-        alt={product.name}
+      <ProductImage
+        product={product}
         className="aspect-square w-32 shrink-0 object-cover"
       />
       <div className="flex flex-1 flex-col justify-between p-4">

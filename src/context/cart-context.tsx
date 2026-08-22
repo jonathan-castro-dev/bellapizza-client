@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
-import type { Product } from '../data/menu'
+import type { Product } from '@/api/get-products'
 
 export const DELIVERY_FEE = 5
 

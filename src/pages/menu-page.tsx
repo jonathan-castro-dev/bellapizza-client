@@ -1,17 +1,37 @@
-import { useState } from 'react'
-import { BottomBar } from '../components/bottom-bar'
-import { CategorySection } from '../components/category-section'
-import { Header } from '../components/header'
-import { ProductSection } from '../components/product-section'
-import { useCart } from '../context/cart-context'
-import type { CategoryId } from '../data/menu'
+import { useMemo, useState } from 'react'
+import { BottomBar } from '@/components/bottom-bar'
+import { CategorySection } from '@/components/category-section'
+import { Header } from '@/components/header'
+import { ProductSection } from '@/components/product-section'
+import { useCart } from '@/context/cart-context'
+import { getCategoriesFromProducts } from '@/data/categories'
+import { useProducts } from '@/hooks/use-products'
 
 export function MenuPage() {
   const { itemCount, addToCart } = useCart()
-  const [selectedCategoryId, setSelectedCategoryId] = useState<CategoryId>('pizzas')
+  const { data: products, isLoading, isError, refetch } = useProducts()
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
   const [showAllProducts, setShowAllProducts] = useState(false)
 
-  function handleSelectCategory(categoryId: CategoryId) {
+  const categories = useMemo(
+    () => getCategoriesFromProducts(products ?? []),
+    [products],
+  )
+
+  const activeCategoryId = selectedCategoryId ?? categories[0]?.id ?? null
+  const activeCategory = categories.find((category) => category.id === activeCategoryId)
+
+  const displayedProducts = useMemo(() => {
+    if (!products) {
+      return []
+    }
+
+    return showAllProducts
+      ? products
+      : products.filter((product) => product.category === activeCategoryId)
+  }, [products, showAllProducts, activeCategoryId])
+
+  function handleSelectCategory(categoryId: string) {
     setSelectedCategoryId(categoryId)
     setShowAllProducts(false)
   }
@@ -21,13 +41,18 @@ export function MenuPage() {
       <Header itemCount={itemCount} />
       <main className="flex flex-col gap-6 pt-4">
         <CategorySection
-          selectedCategoryId={selectedCategoryId}
+          categories={categories}
+          selectedCategoryId={activeCategoryId}
           showAllProducts={showAllProducts}
+          isLoading={isLoading}
           onSelectCategory={handleSelectCategory}
         />
         <ProductSection
-          selectedCategoryId={selectedCategoryId}
-          showAllProducts={showAllProducts}
+          title={showAllProducts ? 'Todos os produtos' : (activeCategory?.name ?? 'Produtos')}
+          products={displayedProducts}
+          isLoading={isLoading}
+          isError={isError}
+          onRetry={() => refetch()}
           onShowAllProducts={() => setShowAllProducts(true)}
           onAddToCart={addToCart}
         />
