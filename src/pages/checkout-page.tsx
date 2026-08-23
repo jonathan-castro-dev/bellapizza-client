@@ -55,13 +55,13 @@ export function CheckoutPage() {
     }
 
     submitOrder({
-      identification: { fullName },
+      clientName: fullName,
       orderType,
       deliveryAddress: { zipCode, street, number, complement },
       paymentMethod,
       cartItems,
       subtotal,
-      total,
+      totalPrice: total,
     })
 
     resetForm()

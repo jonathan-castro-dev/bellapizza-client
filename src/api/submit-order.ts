@@ -1,11 +1,8 @@
+import { api } from '@/services/api'
 import { DELIVERY_FEE, type CartItem } from '../context/cart-context'
 
 export type OrderType = 'delivery' | 'pickup'
 export type PaymentMethod = 'credit_card' | 'pix' | 'cash'
-
-export type OrderIdentification = {
-  fullName: string
-}
 
 export type DeliveryAddress = {
   zipCode: string
@@ -22,8 +19,7 @@ export type OrderCartItem = {
 }
 
 export type OrderPayload = {
-  createdAt: string
-  identification: OrderIdentification
+  clientName: string
   orderType: OrderType
   deliveryAddress: DeliveryAddress
   paymentMethod: PaymentMethod
@@ -31,18 +27,18 @@ export type OrderPayload = {
     items: OrderCartItem[]
     subtotal: number
     deliveryFee: number
-    total: number
+    totalPrice: number
   }
 }
 
 type SubmitOrderInput = {
-  identification: OrderIdentification
+  clientName: string
   orderType: OrderType
   deliveryAddress: DeliveryAddress
   paymentMethod: PaymentMethod
   cartItems: CartItem[]
   subtotal: number
-  total: number
+  totalPrice: number
 }
 
 function mapCartItems(cartItems: CartItem[]): OrderCartItem[] {
@@ -54,18 +50,17 @@ function mapCartItems(cartItems: CartItem[]): OrderCartItem[] {
   }))
 }
 
-export function submitOrder({
-  identification,
+export async function submitOrder({
+  clientName,
   orderType,
   deliveryAddress,
   paymentMethod,
   cartItems,
   subtotal,
-  total,
-}: SubmitOrderInput): void {
+  totalPrice,
+}: SubmitOrderInput) {
   const payload: OrderPayload = {
-    createdAt: new Date().toISOString(),
-    identification,
+    clientName,
     orderType,
     deliveryAddress,
     paymentMethod,
@@ -73,9 +68,9 @@ export function submitOrder({
       items: mapCartItems(cartItems),
       subtotal,
       deliveryFee: DELIVERY_FEE,
-      total,
+      totalPrice,
     },
   }
 
-  console.log(payload)
+  await api.post('/orders', payload)
 }
