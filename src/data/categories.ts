@@ -10,9 +10,9 @@ export type Category = {
 
 const knownCategories: Record<string, Omit<Category, 'id'>> = {
   pizzas: { name: 'Pizzas', icon: Pizza },
-  refrigerants: { name: 'Refrigerantes', icon: CupSoda },
-  desserts: { name: 'Sobremesas', icon: IceCreamCone },
-  entry: { name: 'Entradas', icon: Salad },
+  refrigerantes: { name: 'Refrigerantes', icon: CupSoda },
+  sobremesas: { name: 'Sobremesas', icon: IceCreamCone },
+  entradas: { name: 'Entradas', icon: Salad },
 }
 
 const categoryOrder = Object.keys(knownCategories)

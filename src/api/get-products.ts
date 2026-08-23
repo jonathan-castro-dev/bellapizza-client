@@ -9,7 +9,9 @@ export type Product = {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const response = await api.get<Product[]>('/products')
+  const response = await api.get('/products')
 
-  return response.data
+  const { products }: { products: Product[] } = response.data
+
+  return products
 }
