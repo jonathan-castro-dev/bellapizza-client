@@ -17,8 +17,7 @@
 <h2>🎨 Layout</h2>
 
 <p align="center">
-    <img src="https://github.com/jonathan-castro-dev/to.do/blob/main/public/nome-da-imagem.png" alt="login page" width="400px" height="195px">
-    <img src="https://github.com/jonathan-castro-dev/to.do/blob/main/public/nome-da-imagem.png" alt="Home page" width="400px" height="195px">
+    <img src="https://github.com/jonathan-castro-dev/bellapizza-client/blob/main/src/mockup/app.png" alt="mockup app" width="800px" height="800px">
 </p>
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
